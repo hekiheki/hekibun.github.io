@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="a place to share"><title>React 相关基础 | Hekibun</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">React 相关基础</h1><a id="logo" href="/.">Hekibun</a><p class="description">脚踏实地</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">React 相关基础</h1><div class="post-meta">Mar 5, 2018<span> | </span><span class="category"><a href="/categories/语言/">语言</a></span></div><div class="post-content"><p>React 是Facebook开发的一款JS库，用于构建数据会随时间改变的大型应用。相比传统型的前端开发，React开辟了一个相当另类的途径，实现了前端界面的高效率高性能的开发。React 并不是一个完整的MVC框架，最多可以认为是MVC中的V。</p>
+<a id="more"></a>
+<h2 id="React原理"><a href="#React原理" class="headerlink" title="React原理"></a>React原理</h2><p>在Web开发中，我们总需要将变化的数据实时的反应到UI上，这时候就需要对DOM进行操作，而复杂、频繁的DOM操作通常是性能瓶颈产生的原因。React因此引入了<strong>虚拟DOM</strong> (Virtual DOM) 的机制，通过虚拟DOM去更新真实的DOM。每当数据变化时，React都会重新构建整个DOM树。React有个<strong>diff算法</strong>，更新虚拟DOM并不保证马上影响真实的DOM，而是会等事件循环结束后，利用这个diff算法，比较更新前后的DOM，计算出<strong>最小的步骤</strong>去更新真实的DOM。</p>
+<p>因此，我们开发时不需要再去关注某个数据变化如果更新一个或多个具体的DOM元素，只需要关心在任意一个<strong>数据状态</strong>下，整个界面是如何<strong>Render</strong>的。</p>
+<h2 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h2><p>React推荐以组件的方式去重新思考UI的构成，将UI上的每一个功能相对独立的模块定义为组件，然后通过组件直接的组合和嵌套，构成大的组件，最终构建整个页面。</p>
+<p>以todo-list为例：</p>
+<p><img src="react1.png" alt=""></p>
+<p>可以看到，上图有4个组件。</p>
+<ol>
+<li><strong>App (橙色)</strong>: 包含了整个例子</li>
+<li><strong>Input (绿色)</strong>: 输入框，用于接收用户输入</li>
+<li><strong>List (黄色)</strong>: 根据用户输入展示数据集合</li>
+<li><strong>ListItem (红色)</strong>: 展示每条数据</li>
+</ol>
+<p>这里没有把To-Do List这个标题作为一个组件，因为在本例中，头部是不变的。若头部变的更加复杂（增加一些新的功能），就有足够的理由成为一个单独的组件。</p>
+<p>确定了组件后，开始划分组件的层级。这很简单，图中的子组件在层级结构中应该作为子节点。</p>
+<ul>
+<li><code>App</code><ul>
+<li><code>Input</code></li>
+<li><code>List</code><ul>
+<li><code>ListItem</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据流"><a href="#数据流" class="headerlink" title="数据流"></a>数据流</h2><p>React是单向数据流，从父节点传递到子节点（通过<code>props</code>）。如果顶层的某个<code>props</code>改变了，React会重渲染所有的子节点（未做性能优化）。严格意义上React只提供，也强烈建议使用这种数据交流方式。</p>
+<p>在 React 中有两种数据模型：<strong><code>props</code></strong> 和 <strong><code>state</code></strong>。</p>
+<ol>
+<li><p><strong><code>props</code></strong></p>
+<p> <code>props</code>的主要作用是让该组件的父组件可以传入参数来配置该组件。它是外部传入的配置参数，组件内部无法控制也无法修改。除非外部组件主动传入新的<code>props</code>,否则<code>props</code>永远保持不变。</p>
+</li>
+</ol>
+<ol>
+<li><p><strong><code>state</code></strong></p>
+<p> <code>state</code>的主要作用是用于组件保存，控制，修改自己的可变状态。<code>state</code>在组件内部初始化，可以被组件自身修改，而外部不能访问也不能修改。<code>state</code>只能从当前组件调用<code>this.setState</code>方法进行更新，<code>setState</code>会导致组件的重新渲染。</p>
+</li>
+<li><p><strong><code>props</code></strong> 和 <strong><code>state</code></strong> 的使用方式</p>
+<p> 尽可能的使用<code>props</code>来当数据源，<code>state</code>来存放状态值（简单的数据）。</p>
+</li>
+</ol>
+<h2 id="常用技术栈"><a href="#常用技术栈" class="headerlink" title="常用技术栈"></a>常用技术栈</h2><p>仅此记录我想了解的 React 技术栈：</p>
+<ol>
+<li><a href="https://github.com/facebook/flux" target="_blank" rel="noopener">flux</a></li>
+<li><a href="https://github.com/reactjs/react-redux/blob/master/docs/api.md" target="_blank" rel="noopener">react-redux</a></li>
+<li><a href="https://github.com/dvajs/dva" target="_blank" rel="noopener">dva</a></li>
+<li><a href="https://ant.design/docs/react/introduce-cn" target="_blank" rel="noopener">antd</a></li>
+<li><a href="https://github.com/nuysoft/Mock/wiki/Getting-Started" target="_blank" rel="noopener">mock.js</a></li>
+<li><a href="https://github.com/webpack" target="_blank" rel="noopener">webpack</a></li>
+</ol>
+</div><div class="tags"><a href="/tags/React/">React</a></div><div class="post-nav"><a class="next" href="/2018/03/02/es6-basic/">es6 一些新特性</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://blog.hekibun.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/基础/">基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/语言/">语言</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/markdown/" style="font-size: 15px;">markdown</a> <a href="/tags/React/" style="font-size: 15px;">React</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/react/">React 相关基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/es6-basic/">es6 一些新特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/hexo/">hexo 从零开始建立自己的博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/markdown/">Markdown快速入门</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://blog.sliang.xyz" title="姚森良" target="_blank">姚森良</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Hekibun.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
