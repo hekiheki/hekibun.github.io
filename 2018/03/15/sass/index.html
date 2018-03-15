@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="a place to share"><title>sass | Hekibun</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">sass</h1><a id="logo" href="/.">Hekibun</a><p class="description">脚踏实地</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">sass</h1><div class="post-meta">Mar 15, 2018<span> | </span><span class="category"><a href="/categories/基础/">基础</a></span></div><div class="post-content"><p>公司终于不是我一个前端了，为了大家更好的合作，需要一些规范。同时希望能开发几套UI和组件方便以后代码的重用。<br>先从sass开始记录好了。<br><a id="more"></a><br>以下有部分参考<a href="http://sass.bootcss.com/docs/sass-reference/" target="_blank" rel="noopener">Sass参考手册</a></p>
+<p>Sass 是对 CSS 的扩展，让 CSS 语言更强大、优雅。 它允许你使用<strong>变量</strong>、<strong>嵌套规则</strong>、 <strong>mixins</strong>、<strong>导入</strong>等众多功能， 并且完全兼容 CSS 语法。 Sass 有助于保持大型样式表结构良好， 同时也让你能够快速开始小型项目， 特别是在搭配 Compass 样式库一同使用时。</p>
+<h2 id="特色"><a href="#特色" class="headerlink" title="特色"></a>特色</h2><ul>
+<li>完全兼容 CSS3</li>
+<li>在 CSS 语音基础上添加了扩展功能，比如变量、嵌套(nesting)、混合(mixin)</li>
+<li>对颜色和其他值进行操作的函数 {Sass::Script::Functions 函数}</li>
+<li>函数库<strong>控制指令</strong>之类的高级功能</li>
+<li>良好的格式，可对输出格式进行定制</li>
+<li>支持 <strong>Firebug</strong></li>
+</ul>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>Sass有两种语法，后缀名不同.sass和.scss。</p>
+<ul>
+<li><p>Sass 基本语法（后缀名为.sass）：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$width: 100px</span><br><span class="line">$color: #333</span><br><span class="line"></span><br><span class="line">div</span><br><span class="line">  width: $width</span><br><span class="line">  color: $color</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>SCSS（后缀名为.scss） 是 Sass 3 引入新的语法，其语法完全兼容 CSS3，并且继承了 Sass 的强大功能。也就是说，任何标准的 CSS3 样式表都是具有相同语义的有效的 SCSS 文件。另外，SCSS 还能识别大部分 CSS hacks（一些 CSS 小技巧）和特定于浏览器的语法，例如：古老的 IE filter 语法。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$width: 100px;</span><br><span class="line">$color: #333;</span><br><span class="line"></span><br><span class="line">div&#123;</span><br><span class="line">	width: $width;</span><br><span class="line">	color: $color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>可以看出，.scss的语法需要花括号和分号（对空白符合不敏感），.sass需要换行和缩进。</p>
+<h2 id="使用Sass"><a href="#使用Sass" class="headerlink" title="使用Sass"></a>使用Sass</h2><p>Sass 有三种使用方式： 命令行工具、独立的 Ruby 模块，以及包含 Ruby on Rails 和 Merb 作为支持 Rack 的框架的插件。 所有这些方式的第一步都是安装 Sass gem：</p>
+<pre><code>gem install sass
+</code></pre><p>我用的是mac,windows的安装方式就不提了。</p>
+<p>运行Sass:</p>
+<pre><code>sass input.scss output.css
+</code></pre><p>命令Sass监视文件的改动并更新CSS:</p>
+<pre><code>sass --watch input.scss:output.css
+</code></pre><p>如果你的目录里有很多 Sass 文件，你还可以命令 Sass 监视整个目录：</p>
+<pre><code>sass --watch app/sass:public/stylesheets
+</code></pre><hr>
+<p>以下仅记录我自己常用的sass语法。</p>
+<ol>
+<li><p>变量,sass允许使用变量，所有变量以$开头</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$defaultColor : #333;　</span><br><span class="line">div&#123;</span><br><span class="line">	width: $defaultColor;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 如果变量需要镶嵌在字符串之中，就必须写在#{}中。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$backgroundImg: bg;</span><br><span class="line">div&#123;</span><br><span class="line">	background: url(images/#&#123;$backgroundImg&#125;.jpg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>计算功能</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$fontSize: 1em;</span><br><span class="line">div&#123;</span><br><span class="line">	font-size: $font-size * 2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>嵌套</p>
+</li>
+</ol>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">	p&#123;</span><br><span class="line">		color: red;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+属性也可以嵌套，比如font-size,font-weight等属性，注意font后需加上冒号。
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">	font:&#123;</span><br><span class="line">		size: 12px;</span><br><span class="line">		weight: bold;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+在嵌套的代码内，&amp;可用来引用父元素，比如a:hover可写作如下：
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a&#123;</span><br><span class="line">	&amp;:hover&#123;</span><br><span class="line">		color: blue;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><ol>
+<li><p>函数</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@function pxToRem($px)&#123;</span><br><span class="line">  	@return $px / $baseFontSize * 1rem;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//引用函数</span><br><span class="line">div&#123;</span><br><span class="line">	width: pxToRem(100px);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>@minux，可重用的代码块，可与函数，条件选择等结合</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@mixin align-items ($align) &#123;</span><br><span class="line">  @if $align == flex-start &#123;</span><br><span class="line">    -webkit-box-pack: start;</span><br><span class="line">  &#125; @else if $align == flex-end &#123;</span><br><span class="line">    -webkit-box-pack: end;</span><br><span class="line">  &#125; @else &#123;</span><br><span class="line">    -webkit-box-align: $align;</span><br><span class="line">  &#125;</span><br><span class="line">  -moz-align-items: $align;</span><br><span class="line">  -webkit-align-items: $align;</span><br><span class="line">  align-items: $align;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//引用</span><br><span class="line">div&#123;</span><br><span class="line">	@include align-items(cennter);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>@extend，继承</p>
+</li>
+</ol>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.setColor&#123;</span><br><span class="line">	color: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//引用</span><br><span class="line">.main&#123;</span><br><span class="line">	@extend .setColor;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><ol>
+<li><p>@import，用来插入外部文件</p>
+<p> 引入.scss文件，生成后的.css文件会把代码合并到一起，若是引入.css文件，等同于css的import命令。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import &quot;path/filename.scss&quot;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注释</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 单行注释，只保留在sass源文件中</span><br><span class="line"></span><br><span class="line">/* 注释，会保留到编译后的文件 */ </span><br><span class="line"></span><br><span class="line">/*!</span><br><span class="line">	重要注释，/*后面加感叹号，即使是压缩模式编译，也会保留</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>此外，同事遇到的坑，用中文会报错，需要修改一下文件，以下为解决方法。</p>
+<p><img src="sassError.png" alt=""></p>
+</div><div class="tags"><a href="/tags/前端/">前端</a></div><div class="post-nav"><a class="next" href="/2018/03/05/react/">React 相关基础</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://blog.hekibun.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/基础/">基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/语言/">语言</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/markdown/" style="font-size: 15px;">markdown</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/React/" style="font-size: 15px;">React</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/03/15/sass/">sass</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/react/">React 相关基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/es6-basic/">es6 一些新特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/hexo/">hexo 从零开始建立自己的博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/markdown/">Markdown快速入门</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://blog.sliang.xyz" title="姚森良" target="_blank">姚森良</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Hekibun.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
